@@ -1,0 +1,16 @@
+[
+ {
+  "api_key": null,
+  "api_secret": null,
+  "create_customer_on_status_change": 1,
+  "deal_status": "Won",
+  "docstatus": 0,
+  "doctype": "ERPNext CRM Settings",
+  "enabled": 1,
+  "erpnext_company": "MTBS",
+  "erpnext_site_url": null,
+  "is_erpnext_in_different_site": 0,
+  "modified": "2026-03-18 22:26:31.571427",
+  "name": "ERPNext CRM Settings"
+ }
+]

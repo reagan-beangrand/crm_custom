@@ -170,9 +170,13 @@ app_license = "mit"
 # ------------------------------
 #
 # Specify custom mixins to extend the standard doctype controller.
-# extend_doctype_class = {
+extend_doctype_class = {
 # 	"Task": "crm_custom.custom.task.CustomTaskMixin"
-# }
+     "CRM Lead": "crm_custom.custom.crm_lead.ExtendedCRMLead",
+     "CRM Deal": "crm_custom.custom.crm_deal.ExtendedCRMDeal",
+     "Contact": "crm_custom.custom.contact.ExtendedContact",
+     "ERPNext CRM Settings":"crm_custom.custom.contact.ExtendedContact",
+ }
 
 # Overriding Methods
 # ------------------------------
@@ -250,3 +254,8 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+fixtures=[
+     #{"dt":"ERPNext CRM Settings"},
+     #{"dt":"FCRM Settings"},
+     #{"dt":"CRM Fields Layout","filters":[["name","IN",["Contact-Quick Entry","Contact-Side Panel","CRM Deal-Quick Entry","CRM Deal-Data Fields","CRM Deal-Side Panel","CRM Lead-Quick Entry","CRM Lead-Data Fields","CRM Lead-Side Panel"]]]}
+    ]

@@ -1,0 +1,78 @@
+[
+ {
+  "access_key": null,
+  "auto_update_expected_deal_value": 1,
+  "brand_logo": "/files/ico.png",
+  "brand_name": "MTBS CRM",
+  "currency": "INR",
+  "docstatus": 0,
+  "doctype": "FCRM Settings",
+  "dropdown_items": [
+   {
+    "hidden": 0,
+    "icon": null,
+    "is_standard": 1,
+    "label": "Apps",
+    "name1": "app_selector",
+    "open_in_new_window": 1,
+    "route": "#",
+    "type": "Route"
+   },
+   {
+    "hidden": 0,
+    "icon": "settings",
+    "is_standard": 1,
+    "label": "Settings",
+    "name1": "settings",
+    "open_in_new_window": 1,
+    "route": "#",
+    "type": "Route"
+   },
+   {
+    "hidden": 0,
+    "icon": null,
+    "is_standard": 1,
+    "label": "Login to Frappe Cloud",
+    "name1": "login_to_fc",
+    "open_in_new_window": 1,
+    "route": "#",
+    "type": "Route"
+   },
+   {
+    "hidden": 0,
+    "icon": "info",
+    "is_standard": 1,
+    "label": "About",
+    "name1": "about",
+    "open_in_new_window": 1,
+    "route": "#",
+    "type": "Route"
+   },
+   {
+    "hidden": 0,
+    "icon": null,
+    "is_standard": 1,
+    "label": "",
+    "name1": "separator",
+    "open_in_new_window": 1,
+    "route": null,
+    "type": "Separator"
+   },
+   {
+    "hidden": 0,
+    "icon": "log-out",
+    "is_standard": 1,
+    "label": "Log out",
+    "name1": "logout",
+    "open_in_new_window": 1,
+    "route": "#",
+    "type": "Route"
+   }
+  ],
+  "enable_forecasting": 1,
+  "favicon": "/files/ico.svg",
+  "modified": "2026-03-19 21:29:13.664150",
+  "name": "FCRM Settings",
+  "service_provider": "frankfurter.app"
+ }
+]
