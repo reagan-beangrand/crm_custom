@@ -175,15 +175,16 @@ extend_doctype_class = {
      "CRM Lead": "crm_custom.custom.crm_lead.ExtendedCRMLead",
      "CRM Deal": "crm_custom.custom.crm_deal.ExtendedCRMDeal",
      "Contact": "crm_custom.custom.contact.ExtendedContact",
-     "ERPNext CRM Settings":"crm_custom.custom.contact.ExtendedContact",
+     #"ERPNext CRM Settings":"crm_custom.custom.erpnext_crm_settings.ExtendedERPNextCRMSettings",
  }
 
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
+override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "crm_custom.event.get_events"
-# }
+     "crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings.get_quotation_url": "crm_custom.custom.whitelist_override.get_quotation_url"
+}
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
