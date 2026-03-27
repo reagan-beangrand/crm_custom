@@ -515,13 +515,13 @@ const dealColumns = [
     label: __('Organization'),
     key: 'organization',
     width: '11rem',
-  },
+  },*/
   {
-    label: __('Amount'),
-    key: 'annual_revenue',
+    label: __('First Name'),
+    key: 'first_name',
     align: 'right',
     width: '9rem',
-  },*/
+  },
   {
     label: __('Status'),
     key: 'status',

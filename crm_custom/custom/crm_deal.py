@@ -9,11 +9,17 @@ class ExtendedCRMDeal(CRMDeal):
 		return {
 			"column_field": "status",
 			"title_field": "name",
-			"kanban_fields": '["email", "mobile_no", "_assign", "modified"]',
+			"kanban_fields": '["lead_name","email", "mobile_no", "_assign", "modified"]',
 		}
 	@staticmethod
 	def default_list_data():
-		columns = [			
+		columns = [
+			{
+				"label": "Lead Name",
+				"type": "Data",
+				"key": "lead_name",
+				"width": "11rem",
+			},		
 			{
 				"label": "Status",
 				"type": "Link",
@@ -47,7 +53,8 @@ class ExtendedCRMDeal(CRMDeal):
 			},
 		]
 		rows = [
-			"name",			
+			"name",
+			"lead_name",
 			"status",
 			"email",
 			"currency",

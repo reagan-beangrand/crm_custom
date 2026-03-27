@@ -9,6 +9,12 @@ class ExtendedContact(Contact):
 		frappe.log("ExtendedContact default_list_data called")
 		columns = [
 			{
+				"label": "First Name",
+				"type": "Data",
+				"key": "first_name",
+				"width": "12rem",
+			},
+			{
 				"label": "Name",
 				"type": "Data",
 				"key": "full_name",
@@ -35,6 +41,7 @@ class ExtendedContact(Contact):
 		]
 		rows = [
 			"name",
+			"first_name",
 			"full_name",			
 			"email_id",
 			"mobile_no",
