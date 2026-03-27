@@ -8,7 +8,7 @@ class ExtendedCRMDeal(CRMDeal):
 	def default_kanban_settings():
 		return {
 			"column_field": "status",
-			"title_field": "organization",
+			"title_field": "name",
 			"kanban_fields": '["email", "mobile_no", "_assign", "modified"]',
 		}
 	@staticmethod
