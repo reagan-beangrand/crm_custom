@@ -493,6 +493,7 @@ function getDealRowObject(deal) {
       logo: getOrganization(deal.organization)?.organization_logo,
     },
     annual_revenue: getFormattedCurrency('annual_revenue', deal),
+    first_name: deal.first_name, 
     status: {
       label: deal.status,
       color: getDealStatus(deal.status)?.color,
@@ -518,8 +519,7 @@ const dealColumns = [
   },*/
   {
     label: __('First Name'),
-    key: 'first_name',
-    align: 'right',
+    key: 'first_name',   
     width: '9rem',
   },
   {
