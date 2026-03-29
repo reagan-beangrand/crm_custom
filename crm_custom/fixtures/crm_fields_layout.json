@@ -57,8 +57,8 @@
   "docstatus": 0,
   "doctype": "CRM Fields Layout",
   "dt": "CRM Lead",
-  "layout": "[\n  {\n    \"label\": \"Details\",\n    \"name\": \"details_section\",\n    \"opened\": true,\n    \"columns\": [\n      {\n        \"name\": \"column_ZgLG\",\n        \"fields\": [\n          \"source\",\n          \"lead_owner\"\n        ]\n      }\n    ]\n  },\n  {\n    \"label\": \"Person\",\n    \"name\": \"person_section\",\n    \"opened\": true,\n    \"columns\": [\n      {\n        \"name\": \"column_6c5g\",\n        \"fields\": [\n          \"salutation\",\n          \"email\"\n        ]\n      },\n      {\n        \"name\": \"column_1n7Q\",\n        \"fields\": [\n          \"first_name\",\n          \"mobile_no\"\n        ]\n      },\n      {\n        \"name\": \"column_cT6C\",\n        \"fields\": [\n          \"last_name\"\n        ]\n      }\n    ]\n  }\n]",
-  "modified": "2026-03-19 19:31:27.775884",
+  "layout": "[\n  {\n    \"label\": \"Details\",\n    \"name\": \"details_section\",\n    \"opened\": true,\n    \"columns\": [\n      {\n        \"name\": \"column_ZgLG\",\n        \"fields\": [\n          \"source\"\n        ]\n      },\n      {\n        \"name\": \"column_ZgL2\",\n        \"fields\": [\n          \"lead_owner\"\n        ]\n      }\n    ]\n  },\n  {\n    \"label\": \"Person\",\n    \"name\": \"person_section\",\n    \"opened\": true,\n    \"columns\": [\n      {\n        \"name\": \"column_6c5g\",\n        \"fields\": [\n          \"salutation\",\n          \"email\"\n        ]\n      },\n      {\n        \"name\": \"column_1n7Q\",\n        \"fields\": [\n          \"first_name\",\n          \"mobile_no\"\n        ]\n      },\n      {\n        \"name\": \"column_cT6C\",\n        \"fields\": [\n          \"last_name\"\n        ]\n      }\n    ]\n  }\n]",
+  "modified": "2026-03-29 21:08:39.507274",
   "name": "CRM Lead-Data Fields",
   "type": "Data Fields"
  },

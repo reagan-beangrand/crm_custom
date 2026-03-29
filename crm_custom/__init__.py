@@ -1,5 +1,5 @@
 __version__ = "0.0.1"
-#from crm_custom.custom.custom_contact import default_list_data as custom_default_list_data
-#import frappe.contacts.doctype.contact.contact
+from crm_custom.custom.override import create_customer_in_erpnext as custom_create_customer_in_erpnext
+import crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings
 
-#frappe.contacts.doctype.contact.contact.default_list_data = custom_default_list_data
+crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings.create_customer_in_erpnext = custom_create_customer_in_erpnext

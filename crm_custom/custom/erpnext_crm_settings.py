@@ -110,7 +110,7 @@ class ExtendedERPNextCRMSettings(ERPNextCRMSettings):
             if value is not None
         )
 
-        return f"{base_url}?{query_string}" """
+        return f"{base_url}?{query_string}" 
 
 def get_contact_address(contact_name):	
 	address = frappe.db.get_value("Contact", contact_name, "address")
@@ -128,4 +128,4 @@ def get_contact_address(contact_name):
 		"state": address.state,
 		"country": address.country,
 		"pincode": address.pincode,
-	}
+	}"""

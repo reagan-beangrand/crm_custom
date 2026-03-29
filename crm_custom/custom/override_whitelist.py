@@ -1,8 +1,10 @@
 import frappe
-#import json
+import json
 from frappe import _
 from frappe.utils import get_url_to_list
-from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import  get_contact, get_erpnext_site_client, create_prospect_in_remote_site
+from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import  get_contact,get_contacts
+from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import get_erpnext_site_client
+
 
 @frappe.whitelist()
 def get_quotation_url(crm_deal: str, organization: str | None = None):
@@ -59,3 +61,33 @@ def get_contact_address(contact_name):
 		"country": address.country,
 		"pincode": address.pincode,
 	}
+
+def create_prospect_in_remote_site(crm_deal, erpnext_crm_settings):
+	try:
+		client = get_erpnext_site_client(erpnext_crm_settings)
+		doc = frappe.get_cached_doc("CRM Deal", crm_deal)
+		contacts = get_contacts(doc)
+		contact_name = contacts[0]['contact']		
+		address = get_contact_address(contact_name) or None
+
+		if address and not isinstance(address, dict):
+			address = address.as_dict()
+
+		return client.post_api(
+			"erpnext.crm.frappe_crm_api.create_prospect_against_crm_deal",
+			{				
+				"lead_name": doc.lead_name,
+				"deal_owner": doc.deal_owner,
+				"crm_deal": doc.name,				
+				"contacts": json.dumps(contacts) if contacts else None,
+				"erpnext_company": erpnext_crm_settings.erpnext_company,
+				"address": json.dumps(address) if address else None,
+			},
+		)		
+		
+	except Exception:
+		frappe.log_error(
+			frappe.get_traceback(),
+			f"Error while creating prospect in remote site: {erpnext_crm_settings.erpnext_site_url}",
+		)
+		frappe.throw(_("Error while creating prospect in ERPNext, check error log for more details"))
