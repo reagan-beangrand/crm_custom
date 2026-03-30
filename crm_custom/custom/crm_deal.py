@@ -1,8 +1,17 @@
-#import frappe
-#from frappe import _
+from frappe.model.naming import make_autoname
 from crm.fcrm.doctype.crm_deal.crm_deal import CRMDeal
 
 class ExtendedCRMDeal(CRMDeal):
+	def validate(self):pass      
+
+	def before_insert(self):
+		self.set_admission__batch_number(self)
+
+	def autoname(self):
+		self.set_admission__batch_number(self)
+    
+	def before_naming(self):
+		self.set_admission__batch_number(self)
 
 	@staticmethod
 	def default_kanban_settings():
@@ -11,6 +20,7 @@ class ExtendedCRMDeal(CRMDeal):
 			"title_field": "name",
 			"kanban_fields": '["lead_name","email", "mobile_no", "_assign", "modified"]',
 		}
+	
 	@staticmethod
 	def default_list_data():
 		columns = [
@@ -67,4 +77,16 @@ class ExtendedCRMDeal(CRMDeal):
 			"modified",
 			"_assign",
 		]
-		return {"columns": columns, "rows": rows}    
+		return {"columns": columns, "rows": rows}   
+
+def set_admission__batch_number(self):
+     if self.custom_service_type == "Saree Drape Class (SD)":
+      if not self.custom_admission_number:
+       self.custom_admission_number=make_autoname("ADM-SD-.MM.-.YYYY.-.#####")
+      if not self.custom_batch:
+       self.custom_batch=make_autoname("BAT-SD-.MM.-.YYYY.-.#####")
+     elif self.custom_service_type == "Master Class (MC)":
+      if not self.custom_admission_number:
+       self.custom_admission_number=make_autoname("ADM-MC-.MM.-.YYYY.-.#####")
+      if not self.custom_batch:
+       self.custom_batch=make_autoname("BAT-MC-.MM.-.YYYY.-.#####") 

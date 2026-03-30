@@ -20,7 +20,7 @@ app_license = "mit"
 # 		"has_permission": "crm_custom.api.permission.has_app_permission"
 # 	}
 # ]
-
+export_python_type_annotations = True
 # Includes in <head>
 # ------------------
 
@@ -132,13 +132,16 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
+#doc_events = {
 # 	"*": {
 # 		"on_update": "method",
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
 # 	}
-# }
+#"CRM Deal": {        
+ #       "before_update": "crm_custom.custom.crm_deal.validate"
+#      }        
+#}
 
 # Scheduled Tasks
 # ---------------
