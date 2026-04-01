@@ -1,9 +1,13 @@
 app_name = "crm_custom"
-app_title = "Crm Custom"
+#app_name = "crm"
+app_title = "MTBS CRM"
 app_publisher = "MTBS"
 app_description = "customized crm app"
 app_email = "reagan.grand@gmail.com"
 app_license = "mit"
+#app_icon_url = "/assets/crm_custom/images/logo.svg"
+#app_icon_title = "MTBS CRM"
+#app_icon_route = "/crm"
 
 # Apps
 # ------------------
@@ -11,15 +15,22 @@ app_license = "mit"
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
+add_to_apps_screen = [
+	{
 # 		"name": "crm_custom",
 # 		"logo": "/assets/crm_custom/logo.png",
 # 		"title": "Crm Custom",
 # 		"route": "/crm_custom",
 # 		"has_permission": "crm_custom.api.permission.has_app_permission"
-# 	}
-# ]
+
+          "name": "crm",
+		"logo": "/assets/crm_custom/images/logo.svg",
+		"title": "MTBS CRM",
+		"route": "/crm",
+		"has_permission": "crm.api.check_app_permission",
+	}
+          
+ ]
 export_python_type_annotations = True
 # Includes in <head>
 # ------------------
@@ -260,6 +271,9 @@ override_whitelisted_methods = {
 # ignore_translatable_strings_from = []
 
 fixtures=[
+     #{"dt":"Workspace","filters":[["module","IN",["FCRM"]]]},
+     #{"dt":"Desktop Icon","filters":[["app","IN",["crm"]]]},
+     #{"dt":"Workspace Sidebar","filters":[["name","IN",["Frappe CRM"]]]},
      #{"dt":"ERPNext CRM Settings"},
      #{"dt":"FCRM Settings"},
      #{"dt":"CRM Fields Layout","filters":[["name","IN",["Contact-Quick Entry","Contact-Side Panel","CRM Deal-Quick Entry","CRM Deal-Data Fields","CRM Deal-Side Panel","CRM Lead-Quick Entry","CRM Lead-Data Fields","CRM Lead-Side Panel"]]]}
