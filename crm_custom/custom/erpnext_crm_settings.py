@@ -47,7 +47,8 @@ class ExtendedERPNextCRMSettings(ERPNextCRMSettings):
                 return
 
             contacts = get_contacts(doc)
-            contact_name = contacts[0]['contact']	
+            contact_name = contacts[0]['contact']
+            contact_gender = contacts[0]['gender']	
             address = get_contact_address(contact_name)
 
             customer = {
@@ -58,6 +59,7 @@ class ExtendedERPNextCRMSettings(ERPNextCRMSettings):
                 "crm_deal": doc.name,
                 "contacts": json.dumps(contacts),
                 "address": json.dumps(address) if address else None,
+                "gender": contact_gender
             }
             
 

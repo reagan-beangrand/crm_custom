@@ -1,17 +1,25 @@
+import frappe
+from frappe import _
 from frappe.model.naming import make_autoname
 from crm.fcrm.doctype.crm_deal.crm_deal import CRMDeal
 
 class ExtendedCRMDeal(CRMDeal):
-	def validate(self):pass      
+	def validate(self):
+		super().validate()
+		self.custom_validate()        
+		pass      
 
 	def before_insert(self):
-		self.set_admission__batch_number(self)
+		#self.set_admission_batch_number()
+		pass
 
 	def autoname(self):
-		self.set_admission__batch_number(self)
+		#self.set_admission_batch_number()
+		pass
     
 	def before_naming(self):
-		self.set_admission__batch_number(self)
+		#self.set_admission_batch_number()
+		pass
 
 	@staticmethod
 	def default_kanban_settings():
@@ -79,14 +87,57 @@ class ExtendedCRMDeal(CRMDeal):
 		]
 		return {"columns": columns, "rows": rows}   
 
-def set_admission__batch_number(self):
-     if self.custom_service_type == "Saree Drape Class (SD)":
-      if not self.custom_admission_number:
-       self.custom_admission_number=make_autoname("ADM-SD-.MM.-.YYYY.-.#####")
-      if not self.custom_batch:
-       self.custom_batch=make_autoname("BAT-SD-.MM.-.YYYY.-.#####")
-     elif self.custom_service_type == "Master Class (MC)":
-      if not self.custom_admission_number:
-       self.custom_admission_number=make_autoname("ADM-MC-.MM.-.YYYY.-.#####")
-      if not self.custom_batch:
-       self.custom_batch=make_autoname("BAT-MC-.MM.-.YYYY.-.#####") 
+	def custom_validate(self):
+		self.validate_service_type_field()
+		self.validate_event_tab_fields()
+		pass
+
+	def validate_service_type_field(self):
+		if not self.custom_service_type:
+			frappe.throw(_("Service Type is required."), frappe.MandatoryError)
+		
+	def validate_event_tab_date(self,datetimeValue):
+		if datetimeValue is not None and datetimeValue < frappe.utils.nowdate():
+			frappe.throw(_("You can not select past date in Date"))
+	
+	def validate_mua_poc(self):
+		if self.custom_primary_mua is not None and self.custom_secondary_mua is not None:
+			if self.custom_primary_mua.lower() == self.custom_secondary_mua.lower():
+				frappe.throw(_("Primary MUA and Secondary MUA cannot be the same."), frappe.ValidationError)
+
+	def validate_event_tab_fields(self):
+		if self.custom_service_type and self.custom_service_type.strip().lower() == "bridal makeup":
+			self.validate_event_tab_date(self.custom_datetime)
+			self.validate_mua_poc()
+		else:
+			self.validate_event_tab_date(self.custom_date_of_joining)            
+    	
+	def validate_class_fields(self):
+		if not self.custom_admission_number:
+			frappe.throw(_("Admission Number is required."), frappe.MandatoryError)
+		if not self.custom_batch:
+			frappe.throw(_("Batch is required."), frappe.MandatoryError)
+		if not self.custom_date_of_joining:
+			frappe.throw(_("Date of Joining is required."), frappe.MandatoryError)
+	
+	def validate_event_fields(self):
+		if not self.custom_event:
+			frappe.throw(_("Event is required."), frappe.MandatoryError)
+		if not self.custom_datetime:
+			frappe.throw(_("Date and Time is required."), frappe.MandatoryError)
+		if not self.custom_primary_mua:
+			frappe.throw(_("Primary MUA/POC is required."), frappe.MandatoryError)
+		if not self.custom_secondary_mua:
+			frappe.throw(_("Secondary MUA is required."), frappe.MandatoryError)
+
+	def set_admission_batch_number(self):
+		if self.custom_service_type == "Saree Drape Class (SD)":
+			if not self.custom_admission_number:
+				self.custom_admission_number=make_autoname("ADM-SD-.MM.-.YYYY.-.#####")
+			if not self.custom_batch:
+				self.custom_batch=make_autoname("BAT-SD-.MM.-.YYYY.-.#####")
+		elif self.custom_service_type == "Master Class (MC)":
+			if not self.custom_admission_number:
+				self.custom_admission_number=make_autoname("ADM-MC-.MM.-.YYYY.-.#####")
+			if not self.custom_batch:
+				self.custom_batch=make_autoname("BAT-MC-.MM.-.YYYY.-.#####")

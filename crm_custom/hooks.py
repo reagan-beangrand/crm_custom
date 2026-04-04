@@ -54,6 +54,7 @@ export_python_type_annotations = True
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
+doctype_js = {"CRM Deal" : "public/js/custom_fcrm_deal.js"}
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -276,5 +277,5 @@ fixtures=[
      #{"dt":"Workspace Sidebar","filters":[["name","IN",["Frappe CRM"]]]},
      #{"dt":"ERPNext CRM Settings"},
      #{"dt":"FCRM Settings"},
-     #{"dt":"CRM Fields Layout","filters":[["name","IN",["Contact-Quick Entry","Contact-Side Panel","CRM Deal-Quick Entry","CRM Deal-Data Fields","CRM Deal-Side Panel","CRM Lead-Quick Entry","CRM Lead-Data Fields","CRM Lead-Side Panel"]]]}
+     {"dt":"CRM Fields Layout","filters":[["name","IN",["Contact-Quick Entry","Contact-Side Panel","CRM Deal-Quick Entry","CRM Deal-Data Fields","CRM Deal-Side Panel","CRM Lead-Quick Entry","CRM Lead-Data Fields","CRM Lead-Side Panel"]]]}
     ]
