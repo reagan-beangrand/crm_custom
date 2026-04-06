@@ -22,6 +22,7 @@ def create_customer_in_erpnext(doc, method):
 		"customer_type": "Individual",
 		"default_currency": doc.currency,
 		"crm_deal": doc.name,
+		"gender": contacts[0]['gender'],
 		"contacts": json.dumps(contacts),
 		"address": json.dumps(address) if address else None,
 	}

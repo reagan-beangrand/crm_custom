@@ -4,13 +4,17 @@ from frappe.model.naming import make_autoname
 from crm.fcrm.doctype.crm_deal.crm_deal import CRMDeal
 
 class ExtendedCRMDeal(CRMDeal):
+	def before_save(self):
+		#super().save()
+		pass	
+
 	def validate(self):
 		super().validate()
 		self.custom_validate()        
 		pass      
 
 	def before_insert(self):
-		#self.set_admission_batch_number()
+		self.set_admission_batch_number()
 		pass
 
 	def autoname(self):

@@ -1,10 +1,11 @@
+
 import frappe
 import json
 from frappe import _
 from frappe.utils import get_url_to_list
-from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import  get_contact,get_contacts
-from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import get_erpnext_site_client
-
+from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import  get_contact,get_contacts,get_erpnext_site_client
+#from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import get_erpnext_site_client
+from crm.fcrm.doctype.crm_deal.crm_deal import  create_contact
 
 @frappe.whitelist()
 def get_quotation_url(crm_deal: str, organization: str | None = None):
@@ -91,3 +92,69 @@ def create_prospect_in_remote_site(crm_deal, erpnext_crm_settings):
 			f"Error while creating prospect in remote site: {erpnext_crm_settings.erpnext_site_url}",
 		)
 		frappe.throw(_("Error while creating prospect in ERPNext, check error log for more details"))
+
+@frappe.whitelist()
+def create_deal(doc: dict):
+	deal = frappe.new_doc("CRM Deal")
+
+	contact = doc.get("contact")
+	if not contact and (
+		doc.get("first_name") or doc.get("last_name") or doc.get("email") or doc.get("mobile_no")
+	):
+		contact = create_contact(doc)
+
+	lead = doc.get("lead") or create_lead(doc)
+	lead_name = lead.lead_name #if hasattr(lead, 'lead_name') else set_lead_name(doc)
+	deal.update(
+		{
+			"lead": lead.name,
+			"lead_name": lead_name,
+			"contacts": [{"contact": contact, "is_primary": 1}] if contact else [],
+		}
+	)
+
+	#doc.pop("organization", None)
+
+	deal.update(doc)
+
+	deal.insert(ignore_permissions=True)
+	return deal.name
+
+def create_lead(doc):
+	#existing_contact = contact_exists(doc)
+	#if existing_contact:
+	#	return existing_contact
+
+	lead = frappe.new_doc("CRM Lead")
+	lead.update(
+		{
+			"first_name": doc.get("first_name"),
+			"last_name": doc.get("last_name"),
+			"salutation": doc.get("salutation"),
+			"email": doc.get("email"),
+			"mobile_no": doc.get("mobile_no"),
+			"gender": doc.get("gender"),
+			#"lead_name": set_lead_name(doc),
+			"status": "Qualified",
+			"converted": "1",
+			"communication_status":"Replied"
+		}
+	)
+	
+	lead.insert(ignore_permissions=True)
+	lead.reload()  # load changes by hooks on lead
+
+	return lead
+
+def set_lead_name(doc):
+		if doc.get("first_name"):
+			return " ".join(
+				name
+				for name in [
+					doc.get("salutation"),
+					doc.get("first_name"),
+					doc.get("middle_name"),
+					doc.get("last_name"),
+				]
+				if name
+			)
