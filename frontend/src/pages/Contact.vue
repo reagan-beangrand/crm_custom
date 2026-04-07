@@ -488,12 +488,12 @@ const columns = computed(() => dealColumns)
 function getDealRowObject(deal) {
   return {
     name: deal.name,
-    organization: {
+    /*organization: {
       label: deal.organization,
       logo: getOrganization(deal.organization)?.organization_logo,
     },
     annual_revenue: getFormattedCurrency('annual_revenue', deal),
-    first_name: deal.first_name, 
+    first_name: deal.first_name, */
     status: {
       label: deal.status,
       color: getDealStatus(deal.status)?.color,
@@ -518,9 +518,9 @@ const dealColumns = [
     width: '11rem',
   },*/
   {
-    label: __('First Name'),
-    key: 'first_name',   
-    width: '9rem',
+    label: __('Deal Name'),
+    key: 'name',   
+    width: '12rem',
   },
   {
     label: __('Status'),

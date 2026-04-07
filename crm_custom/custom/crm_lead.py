@@ -1,8 +1,20 @@
-#import frappe
-#from frappe import _
+import frappe
+from frappe import _
 from crm.fcrm.doctype.crm_lead.crm_lead import CRMLead
 
-class ExtendedCRMLead(CRMLead):   
+class ExtendedCRMLead(CRMLead):
+
+	def set_lead_name(self):
+		if not self.lead_name:
+			# Check for leads being created through data import
+			if not self.organization and not self.email and not self.flags.ignore_mandatory:
+				frappe.throw(_("Requires a person's name"))
+			elif self.organization:
+				self.lead_name = self.organization
+			elif self.email:
+				self.lead_name = self.email.split("@")[0]
+			else:
+				self.lead_name = "Unnamed Lead"
 
 	@staticmethod
 	def default_kanban_settings():
@@ -71,7 +83,8 @@ class ExtendedCRMLead(CRMLead):
 		]
 		return {"columns": columns, "rows": rows}
 
-	def create_organization(self, existing_organization=None):
+
+	""" def create_organization(self, existing_organization=None):
 		if not self.organization and not existing_organization:
 			return
 
@@ -93,4 +106,4 @@ class ExtendedCRMLead(CRMLead):
 			}
 		)
 		organization.insert(ignore_permissions=True)
-		return organization.name
+		return organization.name """

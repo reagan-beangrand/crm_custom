@@ -3,27 +3,14 @@ from frappe import _
 from frappe.model.naming import make_autoname
 from crm.fcrm.doctype.crm_deal.crm_deal import CRMDeal
 
-class ExtendedCRMDeal(CRMDeal):
-	def before_save(self):
-		#super().save()
-		pass	
+class ExtendedCRMDeal(CRMDeal):	
 
 	def validate(self):
 		super().validate()
-		self.custom_validate()        
-		pass      
+		self.custom_validate()		      
 
 	def before_insert(self):
 		self.set_admission_batch_number()
-		pass
-
-	def autoname(self):
-		#self.set_admission_batch_number()
-		pass
-    
-	def before_naming(self):
-		#self.set_admission_batch_number()
-		pass
 
 	@staticmethod
 	def default_kanban_settings():
@@ -93,28 +80,27 @@ class ExtendedCRMDeal(CRMDeal):
 
 	def custom_validate(self):
 		self.validate_service_type_field()
-		self.validate_event_tab_fields()
-		pass
+		self.validate_event_tab_fields()		
 
 	def validate_service_type_field(self):
 		if not self.custom_service_type:
 			frappe.throw(_("Service Type is required."), frappe.MandatoryError)
 		
-	def validate_event_tab_date(self,datetimeValue):
+	def validate_event_tab_date(self,datetimeValue,fieldname):
 		if datetimeValue is not None and datetimeValue < frappe.utils.nowdate():
-			frappe.throw(_("You can not select past date in Date"))
+			frappe.throw(_("{0} should not be a past date").format(fieldname))
 	
 	def validate_mua_poc(self):
 		if self.custom_primary_mua is not None and self.custom_secondary_mua is not None:
 			if self.custom_primary_mua.lower() == self.custom_secondary_mua.lower():
-				frappe.throw(_("Primary MUA and Secondary MUA cannot be the same."), frappe.ValidationError)
+				frappe.throw(_("Primary MUA and Secondary MUA should not be the same"), frappe.ValidationError)
 
 	def validate_event_tab_fields(self):
 		if self.custom_service_type and self.custom_service_type.strip().lower() == "bridal makeup":
-			self.validate_event_tab_date(self.custom_datetime)
+			self.validate_event_tab_date(self.custom_datetime,"DateTime")			
 			self.validate_mua_poc()
 		else:
-			self.validate_event_tab_date(self.custom_date_of_joining)            
+			self.validate_event_tab_date(self.custom_date_of_joining,"Date of Joining")			          
     	
 	def validate_class_fields(self):
 		if not self.custom_admission_number:

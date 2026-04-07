@@ -200,7 +200,8 @@ extend_doctype_class = {
 override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "crm_custom.event.get_events"
      "crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings.get_quotation_url": "crm_custom.custom.override_whitelist.get_quotation_url",
-     "crm.fcrm.doctype.crm_deal.crm_deal.create_deal": "crm_custom.custom.override_whitelist.create_deal"
+     "crm.fcrm.doctype.crm_deal.crm_deal.create_deal": "crm_custom.custom.override_whitelist.create_deal",
+     "crm.api.contact.get_linked_deals": "crm_custom.custom.override_whitelist.get_linked_deals"
 }
 #
 # each overriding function accepts a `data` argument;
@@ -280,4 +281,5 @@ fixtures=[
      #{"dt":"FCRM Settings"},
      #{"dt":"Website Settings"},
      #{"dt":"CRM Fields Layout","filters":[["name","IN",["Contact-Quick Entry","Contact-Side Panel","CRM Deal-Quick Entry","CRM Deal-Data Fields","CRM Deal-Side Panel","CRM Lead-Quick Entry","CRM Lead-Data Fields","CRM Lead-Side Panel"]]]}
+     #{"dt":"CRM Lead Source","filters":[["name","IN",["Website","Deal"]]]},
     ]

@@ -1,0 +1,18 @@
+[
+ {
+  "details": "<div class=\"ql-editor read-mode\"><p>Lead from create deal screen</p></div>",
+  "docstatus": 0,
+  "doctype": "CRM Lead Source",
+  "modified": "2026-04-07 15:42:56.135929",
+  "name": "Deal",
+  "source_name": "Deal"
+ },
+ {
+  "details": "<div class=\"ql-editor read-mode\"><p>Lead from website visit</p></div>",
+  "docstatus": 0,
+  "doctype": "CRM Lead Source",
+  "modified": "2026-04-07 15:43:38.861543",
+  "name": "Website",
+  "source_name": "Website"
+ }
+]

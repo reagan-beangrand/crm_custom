@@ -102,18 +102,18 @@ def create_deal(doc: dict):
 		doc.get("first_name") or doc.get("last_name") or doc.get("email") or doc.get("mobile_no")
 	):
 		contact = create_contact(doc)
-
-	lead = doc.get("lead") or create_lead(doc)
-	lead_name = lead.lead_name #if hasattr(lead, 'lead_name') else set_lead_name(doc)
+	
+	lead = create_lead(doc)
+	lead_name = lead.lead_name
 	deal.update(
 		{
 			"lead": lead.name,
-			"lead_name": lead_name,
-			"contacts": [{"contact": contact, "is_primary": 1}] if contact else [],
+			"lead_name": lead_name,			
+			"contacts": [{"contact": contact, "is_primary": 1}] if contact else [],			
 		}
 	)
 
-	#doc.pop("organization", None)
+	doc.pop("organization", None)
 
 	deal.update(doc)
 
@@ -121,20 +121,20 @@ def create_deal(doc: dict):
 	return deal.name
 
 def create_lead(doc):
-	#existing_contact = contact_exists(doc)
-	#if existing_contact:
-	#	return existing_contact
-
 	lead = frappe.new_doc("CRM Lead")
+	contact=None
+	if not doc.get("first_name"):
+		contact = frappe.get_list("Contact",fields=["name","first_name","last_name","salutation","email_id","mobile_no","gender"], filters={"name": doc.get("contact")}, limit=1)
 	lead.update(
 		{
-			"first_name": doc.get("first_name"),
-			"last_name": doc.get("last_name"),
-			"salutation": doc.get("salutation"),
-			"email": doc.get("email"),
-			"mobile_no": doc.get("mobile_no"),
-			"gender": doc.get("gender"),
-			#"lead_name": set_lead_name(doc),
+			"first_name": contact[0].first_name if contact else doc.get("first_name"),
+			"last_name": contact[0].last_name if contact else doc.get("last_name"),
+			"salutation": contact[0].salutation if contact else doc.get("salutation"),
+			"email": contact[0].email_id if contact else doc.get("email"),
+			"mobile_no": contact[0].mobile_no if contact else doc.get("mobile_no"),
+			"gender": contact[0].gender if contact else doc.get("gender"),
+			"lead_owner":doc.get("deal_owner"),
+			"source":"Deal",			
 			"status": "Qualified",
 			"converted": "1",
 			"communication_status":"Replied"
@@ -146,15 +146,36 @@ def create_lead(doc):
 
 	return lead
 
-def set_lead_name(doc):
-		if doc.get("first_name"):
-			return " ".join(
-				name
-				for name in [
-					doc.get("salutation"),
-					doc.get("first_name"),
-					doc.get("middle_name"),
-					doc.get("last_name"),
-				]
-				if name
-			)
+@frappe.whitelist()
+def get_linked_deals(contact: str):
+	"""Get linked deals for a contact"""
+
+	if not frappe.has_permission("Contact", "read", contact):
+		frappe.throw(_("Not permitted"), frappe.PermissionError)
+
+	deal_names = frappe.get_all(
+		"CRM Contacts",
+		filters={"contact": contact, "parenttype": "CRM Deal"},
+		fields=["parent"],
+		distinct=True,
+	)
+
+	# get deals data
+	deals = []
+	for d in deal_names:
+		deal = frappe.get_cached_doc(
+			"CRM Deal",
+			d.parent,
+			fields=[
+				"name",
+				"first_name",		
+				"status",
+				"email",
+				"mobile_no",
+				"deal_owner",
+				"modified",
+			],
+		)
+		deals.append(deal.as_dict())
+
+	return deals
