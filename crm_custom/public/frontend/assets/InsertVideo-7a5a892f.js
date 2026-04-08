@@ -1,0 +1,2 @@
+import{j as s,v as t,P as a,Q as d}from"./index-c6ba2b5b.js";const p=s({__name:"InsertVideo",props:{editor:{}},setup(e){const o=e;function n(){o.editor.chain().focus().selectAndUploadVideo().run()}return(r,i)=>t(r.$slots,"default",a(d({onClick:n})))}});export{p as default};
+//# sourceMappingURL=InsertVideo-7a5a892f.js.map
