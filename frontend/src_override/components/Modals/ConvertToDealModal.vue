@@ -135,18 +135,18 @@ async function convertToDeal() {
     return
   }
 
-  if (existingOrganizationChecked.value && !existingOrganization.value) {
+  /*if (existingOrganizationChecked.value && !existingOrganization.value) {
     error.value = __('Please select an existing organization')
     return
-  }
+  }*/
 
   if (!existingContactChecked.value && existingContact.value) {
     existingContact.value = ''
   }
 
-  if (!existingOrganizationChecked.value && existingOrganization.value) {
+  /*if (!existingOrganizationChecked.value && existingOrganization.value) {
     existingOrganization.value = ''
-  }
+  }*/
 
   await triggerConvertToDeal?.(props.lead, deal.doc, () => (show.value = false))
 

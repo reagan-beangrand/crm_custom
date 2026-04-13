@@ -75,7 +75,8 @@
           </div>
         </Tooltip>
         <div class="flex flex-col gap-2.5 truncate text-ink-gray-9">
-          <Tooltip :text="organization?.name || __('Set an Contact')">
+          <!-- <Tooltip :text="organization?.name || __('Set an Contact')"> -->
+            <Tooltip :text="doc.lead_name || __('Set an Contact')">
             <div class="truncate text-2xl font-medium">
               {{ title }}
             </div>

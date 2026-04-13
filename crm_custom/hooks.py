@@ -282,4 +282,6 @@ fixtures=[
      #{"dt":"Website Settings"},
      #{"dt":"CRM Fields Layout","filters":[["name","IN",["Contact-Quick Entry","Contact-Side Panel","CRM Deal-Quick Entry","CRM Deal-Data Fields","CRM Deal-Side Panel","CRM Lead-Quick Entry","CRM Lead-Data Fields","CRM Lead-Side Panel"]]]}
      #{"dt":"CRM Lead Source","filters":[["name","IN",["Website","Deal"]]]},
+     #{"dt":"Letter Head","filters":[["name","IN",["Company Letterhead - MTBS"]]]},
+     #{"dt":"Print Format","filters":[["name","IN",["MTBS-SO-Quotation"]]]},
     ]

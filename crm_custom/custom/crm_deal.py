@@ -7,8 +7,9 @@ class ExtendedCRMDeal(CRMDeal):
 
 	def validate(self):
 		super().validate()
-		if self.is_new():
-			self.custom_validate()	
+		self.custom_validate()	
+		#if self.is_new():
+		#	self.custom_validate()	
 
 	def before_insert(self):
 		self.set_admission_batch_number()
