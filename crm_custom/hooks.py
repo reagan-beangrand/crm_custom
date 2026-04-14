@@ -40,7 +40,7 @@ export_python_type_annotations = True
 # app_include_js = "/assets/crm_custom/js/crm_custom.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/crm_custom/css/crm_custom.css"
+web_include_css = "/assets/crm_custom/css/custom.css"
 # web_include_js = "/assets/crm_custom/js/crm_custom.js"
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -284,4 +284,7 @@ fixtures=[
      #{"dt":"CRM Lead Source","filters":[["name","IN",["Website","Deal"]]]},
      #{"dt":"Letter Head","filters":[["name","IN",["Company Letterhead - MTBS"]]]},
      #{"dt":"Print Format","filters":[["name","IN",["MTBS-SO-Quotation"]]]},
+     {
+         "doctype": "Portal Settings",
+     }
     ]
