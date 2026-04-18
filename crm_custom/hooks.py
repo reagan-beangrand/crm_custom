@@ -12,7 +12,7 @@ app_license = "mit"
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["crm"]
 
 # Each item in the list will be shown as an app in the apps page
 add_to_apps_screen = [
@@ -63,13 +63,13 @@ doctype_js = {"CRM Deal" : "public/js/custom_fcrm_deal.js"}
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "crm_custom/public/icons.svg"
+# app_include_icons = "/assets/crm_custom/images/logo_pinkBG.png"
 
 # Home Pages
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "login"
+home_page = "home"
 
 # website user home page (by Role)
 # role_home_page = {

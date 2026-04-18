@@ -12,11 +12,17 @@
 
 	<title>{% block title %}{{ title | striptags }}{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
+ 	<!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
 	{% block favicon %}
 	<link
-		rel="shortcut icon"
-		href="{{ (favicon or "/assets/frappe/images/frappe-favicon.svg") | abs_url }}"
+		rel="shortcut icon"		
+		href="/assets/crm_custom/images/logo_pinkBG.png"
 		type="image/x-icon"
 	>
 	{% endblock %}
@@ -41,7 +47,9 @@
 		_jipt.push(['project', 'frappe']);
 	</script>
 	<script type="text/javascript" src="https://cdn.crowdin.com/jipt/jipt.js"></script>
-	{% endif %}
+	{% endif %} 	
+	 <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script>
 		window.frappe = {};

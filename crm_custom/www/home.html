@@ -1,4 +1,92 @@
-{% extends "templates/web.html" %}
+{% extends "templates/web.html" %}   
 {% block page_content %}
-<h1>Home!</h1>
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title animate__animated animate__fadeInDown">Artistry in Every Detail</h1>
+                    <p class="lead mb-5 opacity-90">Experience the transformation you deserve with our luxury makeover services.</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a href="#services" class="btn btn-light btn-lg px-4 rounded-pill">Our Services</a>
+                        <a href="#" class="btn btn-outline-light btn-lg px-4 rounded-pill">View Gallery</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Signature Services</h2>
+                <p class="text-muted">Tailored beauty experiences for every unique occasion.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Service 1 -->
+                <div class="col-md-4">
+                    <div class="card service-card h-100">
+                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=2071&auto=format&fit=crop" class="card-img-top" alt="Bridal">
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-3">Bridal Couture</h3>
+                            <p class="card-text text-muted small">Elegant and long-lasting makeup designed specifically for the modern bride.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--primary-rose)">View Package <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="col-md-4">
+                    <div class="card service-card h-100">
+                        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1935&auto=format&fit=crop" class="card-img-top" alt="Glam">
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-3">Evening Glam</h3>
+                            <p class="card-text text-muted small">Bold, sophisticated looks for gala events, parties, and red carpet appearances.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--primary-rose)">View Package <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="col-md-4">
+                    <div class="card service-card h-100">
+                        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=2070&auto=format&fit=crop" class="card-img-top" alt="Education">
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-3">Masterclasses</h3>
+                            <p class="card-text text-muted small">Learn professional techniques from our experts in personalized workshops.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--primary-rose)">View Package <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="section-padding" style="background-color: var(--soft-blush);">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?q=80&w=2080&auto=format&fit=crop" class="img-fluid rounded-4 shadow-lg" alt="About Us">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Redefining Beauty</h2>
+                    <p class="lead text-muted mb-4">Founded in 2015, Glow & Grace Studio was born out of a passion for enhancing natural features rather than masking them.</p>
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <div class="stats-box">
+                                <h4 class="fw-bold mb-1" style="color: var(--primary-rose)">10+</h4>
+                                <small class="text-uppercase text-muted">Years</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stats-box">
+                                <h4 class="fw-bold mb-1" style="color: var(--primary-rose)">2.5k+</h4>
+                                <small class="text-uppercase text-muted">Clients</small>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-muted">We use only premium, hypoallergenic products to ensure you not only look stunning but feel comfortable throughout your event.</p>
+                </div>
+            </div>
+        </div>
+    </section>    
 {% endblock %}

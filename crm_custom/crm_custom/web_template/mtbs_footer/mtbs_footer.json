@@ -1,12 +1,20 @@
 {
- "__islocal": true,
  "__unsaved": 1,
  "creation": "2026-04-14 21:29:41.460787",
  "docstatus": 0,
  "doctype": "Web Template",
- "fields": [],
+ "fields": [
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "Test1",
+   "fieldtype": "Data",
+   "label": "Test",
+   "reqd": 0
+  }
+ ],
  "idx": 0,
- "modified": "2026-04-14 21:29:41.460787",
+ "modified": "2026-04-16 20:36:38.885293",
  "modified_by": "Administrator",
  "module": "Crm Custom",
  "name": "MTBS Footer",

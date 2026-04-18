@@ -3,3 +3,14 @@
 	background: #79caa8;
 
 }
+body {
+    background-image: url('/assets/crm_custom/images/login-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.login-content {
+    background: rgba(255, 255, 255, 0.8); /* Adds transparency to the login box */
+    padding: 20px;
+    border-radius: 10px;
+}
