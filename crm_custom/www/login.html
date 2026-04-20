@@ -61,7 +61,7 @@
 	{% if title %}
 	<h4>{{ _(title)}}</h4>
 	{% else %}
-	<h4>{{ _('Login to {0}').format(app_name or _("MTBS ERP")) }}</h4>
+	<h4>{{ _('Login to {0}').format(_("MTBS ERP")) }}</h4>
 	{% endif %}
 </div>
 {% endmacro %}
@@ -76,7 +76,7 @@
 				{{ _("You need to enable JavaScript for your app to work.") }}<br>{{ _("To enable it follow the instructions in the following link: {0}").format("<a href='https://enable-javascript.com/'>enable-javascript.com</a></p>") }}
 		</div>
 	</noscript>
-	<section class='for-login'>
+	<section class='for-login login-form-position'>
 		{{ logo_section() }}
 		<div class="login-content page-card">
 			<form class="form-signin form-login" role="form">
@@ -143,7 +143,7 @@
 	</section>
 
 	{%- if social_login -%}
-	<section class='for-email-login'>
+	<section class='for-email-login login-form-position'>
 		{{ logo_section() }}
 		<div class="login-content page-card">
 			<form class="form-signin form-login" role="form">
@@ -158,7 +158,7 @@
 		{%- endif -%}
 	</section>
 	{%- endif -%}
-	<section class='for-signup {{ "signup-disabled" if disable_signup else "" }}'>
+	<section class='login-form-position for-signup {{ "signup-disabled" if disable_signup else "" }}'>
 		{{ logo_section(_('Create a {0} Account').format(app_name or _("Frappe"))) }}
 		<div class="login-content page-card">
 			{%- if not disable_signup -%}
@@ -174,7 +174,7 @@
 
 	</section>
 
-	<section class='for-forgot'>
+	<section class='for-forgot login-form-position'>
 		{{ logo_section('Forgot Password') }}
 		<div class="login-content page-card">
 			<form class="form-signin form-forgot hide" role="form">
@@ -201,7 +201,7 @@
 		</div>
 	</section>
 
-	<section class='for-login-with-email-link'>
+	<section class='for-login-with-email-link login-form-position'>
 			{{ logo_section(_('Login with Email Link')) }}
 		<div class="login-content page-card">
 			<form class="form-signin form-login-with-email-link hide" role="form">

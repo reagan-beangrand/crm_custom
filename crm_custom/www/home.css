@@ -4,6 +4,23 @@
     --deep-stone: #2d2a26;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--deep-stone);
+    background-color: #fcfcfc;
+}
+
+h1,
+h2,
+h3
+{
+    font-family: 'Playfair Display', serif;
+}
+
 /* Hero Section */
 .hero-section {
     height: 90vh;
@@ -59,17 +76,66 @@
     background-color: var(--primary-rose);
 }
 
+/* Portfolio Carousel Styling */
+.carousel-item img {
+    height: 650px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 20px;
+    bottom: 40px;
+}
+
 .stats-box {
     background-color: var(--soft-blush);
     padding: 30px;
     border-radius: 20px;
     text-align: center;
 }
+ /* Booking Form Styles */
+        .booking-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+.form-label {
+            font-weight: 500;
+            color: var(--deep-stone);
+        }
 
+        .form-control, .form-select {
+            border-radius: 10px;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
 
+        .form-control:focus {
+            border-color: var(--primary-rose);
+            box-shadow: 0 0 0 0.25rem rgba(139, 29, 61, 0.1);
+        }
+
+        /* Logic for page switching */
+        .page-view {
+            display: none;
+        }
+        .page-view.active {
+            display: block;
+        }
 
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.5rem;
+    }
+
+    .carousel-item img {
+        height: 400px;
     }
 }
