@@ -82,28 +82,3 @@ class ExtendedCRMLead(CRMLead):
 			"image",
 		]
 		return {"columns": columns, "rows": rows}
-
-
-	""" def create_organization(self, existing_organization=None):
-		if not self.organization and not existing_organization:
-			return
-
-		existing_organization = existing_organization or frappe.db.exists(
-			"CRM Organization", {"organization_name": self.organization}
-		)
-		if existing_organization:
-			self.db_set("organization", existing_organization)
-			return existing_organization
-
-		organization = frappe.new_doc("CRM Organization")
-		organization.update(
-			{
-				"organization_name": "MTBS",#self.organization,
-				"website": "https://makeuptrendselite.com/",#self.website,
-				#"territory": self.territory,
-				"industry": "Service",#self.industry,
-				"annual_revenue": 0,#self.annual_revenue,
-			}
-		)
-		organization.insert(ignore_permissions=True)
-		return organization.name """

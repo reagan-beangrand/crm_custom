@@ -304,6 +304,13 @@ frappe.ready(function () {
 	}else{
 		$("body .web-footer").hide();
 		$("body .custom-web-footer").hide();
+	}	
+    if (window.location.pathname == '/login') {
+	 	const bodyElement = document.getElementById('custom-body');
+    	bodyElement.classList.add("custom-body-bg");
+    }else{
+		const bodyElement = document.getElementById('custom-body');
+    	bodyElement.classList.remove("custom-body-bg");
 	}
 
 	$(".form-signup, .form-forgot, .form-login-with-email-link").removeClass("hide");

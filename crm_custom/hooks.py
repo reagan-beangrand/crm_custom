@@ -36,11 +36,11 @@ export_python_type_annotations = True
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/crm_custom/css/crm_custom.css"
-# app_include_js = "/assets/crm_custom/js/crm_custom.js"
+app_include_css = "/assets/crm_custom/css/custom.css"
+app_include_js = "/assets/crm_custom/js/custom_about.js"
 
 # include js, css files in header of web template
-web_include_css = "/assets/crm_custom/css/custom.css"
+# web_include_css = "/assets/crm_custom/css/custom.css"
 # web_include_js = "/assets/crm_custom/js/crm_custom.js"
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -81,6 +81,11 @@ home_page = "home"
 
 # automatically create page for each record of this doctype
 # website_generators = ["Web Page"]
+website_context = {
+	"favicon": "/assets/crm_custom/images/ico.png",
+     "splash_image": "/assets/crm_custom/images/logo_pinkBG.png",
+     "banner_image": "/assets/crm_custom/images/logo_pinkBG.png",	
+}
 
 # automatically load and sync documents of this doctype from downstream apps
 # importable_doctypes = [doctype_1]
@@ -203,6 +208,27 @@ override_whitelisted_methods = {
      "crm.fcrm.doctype.crm_deal.crm_deal.create_deal": "crm_custom.custom.override_whitelist.create_deal",
      "crm.api.contact.get_linked_deals": "crm_custom.custom.override_whitelist.get_linked_deals"
 }
+
+standard_help_items = [
+	{
+		"item_label": "About",
+		"item_type": "Action",
+		"action": "frappe.ui.toolbar.show_about()",
+		"is_standard": 1,
+	},
+	{
+		"item_label": "Keyboard Shortcuts",
+		"item_type": "Action",
+		"action": "frappe.ui.toolbar.show_shortcuts(event)",
+		"is_standard": 1,
+	},
+	{
+		"item_label": "System Health",
+		"item_type": "Route",
+		"route": "/desk/system-health-report",
+		"is_standard": 1,
+	},
+]
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,

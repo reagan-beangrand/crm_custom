@@ -1,16 +1,14 @@
-.navbar-light {
-	
-	background: #79caa8;
-
+.navbar-container{
+	background-color: #fdf2f4;
+	border-bottom: 1px solid rgba(139, 29, 61, 0.1);
 }
-body {
-    background-image: url('/assets/crm_custom/images/login-bg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+.page-container{
+	background-color: rgb(245, 251, 251);
+    
 }
-.login-content {
-    background: rgba(255, 255, 255, 0.8); /* Adds transparency to the login box */
-    padding: 20px;
-    border-radius: 10px;
+.main-section{
+	background-image: url('/assets/crm_custom/images/login-bg.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }

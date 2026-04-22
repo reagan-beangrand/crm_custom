@@ -1,3 +1,9 @@
 .login-form-position{
 		margin-left: 50%;
 	}
+.custom-body-bg {
+	background-image: url('/assets/crm_custom/images/login-bg.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}

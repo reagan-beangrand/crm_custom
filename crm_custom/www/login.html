@@ -57,7 +57,7 @@
 
 {% macro logo_section(title=null) %}
 <div class="page-card-head">
-	<img class="app-logo" src="/assets/crm_custom/images/logo.svg" alt="{{ _("MTBS ERP") }}">
+	<img class="app-logo" src="/assets/crm_custom/images/logo_pinkBG.png" alt="{{ _("MTBS ERP") }}">
 	{% if title %}
 	<h4>{{ _(title)}}</h4>
 	{% else %}
@@ -68,7 +68,7 @@
 
 {% block page_content %}
 <!-- {{ for_test }} -->
-<div>
+
 	<noscript>
 		<div class="text-center my-5">
 			<h4>{{ _("Javascript is disabled on your browser") }}</h4>
@@ -225,11 +225,13 @@
 			</form>
 		</div>
 	</section>
-</div>
+
 {% endblock %}
 
 {% block script %}
-<script>{% include "templates/includes/login/login.js" %}</script>
+<script>
+{% include "templates/includes/login/login.js" %}
+</script>
 {% endblock %}
 
 {% block sidebar %}{% endblock %}

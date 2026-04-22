@@ -1,6 +1,5 @@
 {% extends "templates/web.html" %}
 {% block page_content %}
-
 <!-- HOME PAGE VIEW -->
 <div id="home-view" class="page-view active">
     <!-- Hero Section -->
@@ -8,23 +7,21 @@
         <div class="container text-center">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <h1 class="hero-title" style="color:white;margin: auto; padding-bottom:5%;">Artistry in Every
-                        Detail
+                    <h1 class="hero-title" style="color:white;margin: auto; padding-bottom:5%;">
+                        Artistry in Every Detail
                     </h1>
-                    <p class="lead mb-5 opacity-90" style="color:white">Experience the transformation you deserve
-                        with
-                        our luxury makeover services.</p>
+                    <p class="lead mb-5 opacity-90" style="color:white">
+                        Experience the transformation you deserve with our luxury makeover services.</p>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                         <a href="#services" class="btn btn-light btn-lg px-4 rounded-pill">Our Services</a>
-                        <a href="#portfolio" class="btn btn-outline-light btn-lg px-4 rounded-pill">View
-                            Portfolio</a>
+                        <a href="#portfolio" class="btn btn-outline-light btn-lg px-4 rounded-pill">View Portfolio</a>
                     </div>
                 </div>
             </div>
         </div>
     </header>
     <!-- Services Section -->
-    <section id="services" class="section-padding bg-white">
+    <section id="services" class="section-padding bg-light">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title">Signature Services</h2>
@@ -172,7 +169,7 @@
         </div>
     </section>
     <!-- Contact Section -->
-    <section id="contact" class="section-padding bg-white">
+    <section id="contact" class="section-padding bg-transparent">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title">Find Us & Get in Touch</h2>
@@ -183,9 +180,9 @@
                     <div class="map-container">
                         <!-- Google Map Embed -->
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.422199042548!2d-73.9873196845939!3d40.75889497932677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1645000000000!5m2!1sen!2sus"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.8761184136453!2d80.199426!3d12.992822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52670e9b925b41%3A0x7d6f55483863484f!2s2%2F50%2C%20E%20Karikalan%202nd%20St%2C%20Paramesh%20Nagar%2C%20Adambakkam%2C%20Chennai%2C%20Tamil%20Nadu%20600088!5e0!3m2!1sen!2sin!4v1714578901234!5m2!1sen!2sin"
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
+                            referrerpolicy="no-referrer-when-downgrade" alt="Map of Makeup Trends Bridal Studio & Academy">
                         </iframe>
                     </div>
                 </div>
@@ -208,10 +205,13 @@
                             <label for="gender" class="form-label">Gender *</label>
                             <select class="form-select" id="gender" required>
                                 <option selected value="">Select Gender</option>
-                                <option value="female">Female</option>
-                                <option value="male">Male</option>
-                                <option value="other">Other</option>
-                                <option value="prefer-not-to-say">Prefer not to say</option>
+                                <option value="Female">Female</option>
+                                <option value="Genderqueer">Genderqueer</option>
+                                <option value="Male">Male</option>
+                                <option value="Non-Conforming">Non-Conforming</option>
+                                <option value="Other">Other</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                                <option value="Transgender">Transgender</option>
                             </select>
                         </div>
                         <div class="col-md-12 mt-4">
@@ -227,75 +227,6 @@
 {% endblock %}
 {% block script %}
 <script>
-     /**
-         * Page Switching Logic
-         * @param {string} pageId - The ID of the view to show
-         * @param {HTMLElement} element - The clicked element to set active state
-         */
-        function showPage(pageId, element) {
-            // 1. Switch visibility of page sections
-            document.querySelectorAll('.page-view').forEach(view => {
-                view.classList.remove('active');
-            });
-            const selectedView = document.getElementById(pageId + '-view');
-            if (selectedView) {
-                selectedView.classList.add('active');
-            }
-
-            // 2. Clear all active styles from navigation links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // 3. Set the clicked element as active if it's a nav-link
-            if (element && element.classList.contains('nav-link')) {
-                element.classList.add('active');
-            } 
-            // Fallback: If clicked on Logo or Home link specifically
-            else if (pageId === 'home') {
-                const homeLink = document.querySelector('.nav-link[onclick*="home"]');
-                if (homeLink) homeLink.classList.add('active');
-            }
-
-            // 4. Smooth scroll to top if we switched views
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Close mobile menu if open
-            const navbarCollapse = document.getElementById('navbarNav');
-            if (navbarCollapse.classList.contains('show')) {
-                new bootstrap.Collapse(navbarCollapse).hide();
-            }
-        }
-
-    // Contact Form Handling
-    function handleContact(event) {
-        event.preventDefault();
-        const firstName = document.getElementById('firstName').value;
-        const mobileNo = document.getElementById('mobileNo').value;
-        const container = document.getElementById('contact-form-container');
-
-        frappe.call({
-        method: "frappe.ping", //dotted path to server method
-        callback: function(r) {
-            if (!r.exc) {
-                if (r.message) {
-								container.innerHTML = r.message
-							}
-             
- }
-        
-        }
-        });
-
-        // Show success message inline
-        container.innerHTML = `
-                <div class="text-center h-100 d-flex flex-column justify-content-center align-items-center p-4 bg-light rounded-4">
-                    <i class="fas fa-check-circle text-success mb-3" style="font-size: 4rem;"></i>
-                    <h3 class="h4 mb-3">Message Sent!</h3>
-                    <p class="text-muted mb-4">Thank you, <strong>${firstName}</strong>. Your inquiry has been successfully received. Our team will get back to you shortly.</p>
-                    <button onclick="location.reload()" class="btn btn-outline-secondary rounded-pill px-4">Send Another Message</button>
-                </div>
-            `;
-    }   
+    {% include "templates/includes/home/home.js" %} 
 </script>
 {% endblock %}
