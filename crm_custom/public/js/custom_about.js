@@ -1,3 +1,4 @@
+// Original file location : frappe/frappe/public/js/frappe/ui/toolbar/about.js
 frappe.provide("frappe.ui.misc");
 frappe.ui.misc.about = function () {
 	if (frappe.ui.misc.about_dialog) {
@@ -26,11 +27,12 @@ frappe.ui.misc.about = function () {
 						</a>
 					</b>
 				</p>
-
+				<!--
 				<hr>
 
 				<p class='text-muted'>${__("&copy; Frappe Technologies Pvt. Ltd. and contributors")} </p>
-			</div>`
+				-->
+				</div>`
 	);
 
 	frappe.ui.misc.about_dialog = dialog;

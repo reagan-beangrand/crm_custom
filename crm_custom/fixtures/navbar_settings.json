@@ -1,0 +1,50 @@
+[
+ {
+  "announcement_widget": null,
+  "app_logo": "/files/logo_whiteBG2.png",
+  "docstatus": 0,
+  "doctype": "Navbar Settings",
+  "help_dropdown": [
+   {
+    "action": "frappe.ui.toolbar.show_about()",
+    "condition": null,
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "About",
+    "item_type": "Action",
+    "route": null
+   },
+   {
+    "action": "frappe.ui.toolbar.show_shortcuts(event)",
+    "condition": null,
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "Keyboard Shortcuts",
+    "item_type": "Action",
+    "route": null
+   },
+   {
+    "action": null,
+    "condition": null,
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "System Health",
+    "item_type": "Route",
+    "route": "/desk/system-health-report"
+   }
+  ],
+  "modified": "2026-04-24 17:26:55.754898",
+  "name": "Navbar Settings",
+  "settings_dropdown": [
+   {
+    "action": "erpnext.demo.clear_demo();",
+    "condition": "eval: frappe.boot.sysdefaults.demo_company && frappe.boot.sysdefaults.demo_company.length > 0",
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "Delete Demo Data",
+    "item_type": "Action",
+    "route": null
+   }
+  ]
+ }
+]

@@ -5,6 +5,7 @@ app_publisher = "MTBS"
 app_description = "customized crm app"
 app_email = "reagan.grand@gmail.com"
 app_license = "mit"
+app_logo_url = "/assets/crm_custom/images/logo_pinkBG.png"
 #app_icon_url = "/assets/crm_custom/images/logo.svg"
 #app_icon_title = "MTBS CRM"
 #app_icon_route = "/crm"
@@ -37,7 +38,9 @@ export_python_type_annotations = True
 
 # include js, css files in header of desk.html
 app_include_css = "/assets/crm_custom/css/custom.css"
-app_include_js = "/assets/crm_custom/js/custom_about.js"
+app_include_js = [
+    "/assets/crm_custom/js/custom_about.js",    
+]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/crm_custom/css/custom.css"
@@ -51,7 +54,7 @@ app_include_js = "/assets/crm_custom/js/custom_about.js"
 # webform_include_css = {"doctype": "public/css/doctype.css"}
 
 # include js in page
-# page_js = {"page" : "public/js/file.js"}
+page_js = {"desktop" : "public/js/custom_desktop.js"}
 
 # include js in doctype views
 doctype_js = {"CRM Deal" : "public/js/custom_fcrm_deal.js"}
@@ -311,6 +314,7 @@ fixtures=[
      #{"dt":"Letter Head","filters":[["name","IN",["Company Letterhead - MTBS"]]]},
      #{"dt":"Print Format","filters":[["name","IN",["MTBS-SO-Quotation"]]]},
      {
-         "doctype": "Portal Settings",
+         #"doctype": "Portal Settings", 
+         #"doctype": "Navbar Settings",
      }
     ]
