@@ -36,7 +36,7 @@
       </Dropdown>
     </template>
   </LayoutHeader>
-  <div v-if="doc.name" class="flex h-full overflow-hidden">
+  <div v-if="doc.name" class="flex h-full overflow-hidden">    
     <Tabs
       v-model="tabIndex"
       as="div"
@@ -55,8 +55,8 @@
           @afterSave="reloadAssignees"
         />
       </template>
-    </Tabs>
-    <Resizer side="right" class="flex flex-col justify-between border-l">
+    </Tabs>    
+    <Resizer side="right" class="flex flex-col justify-between border-l deal-details">
       <div
         class="flex h-[45px] cursor-copy items-center border-b px-5 py-2.5 text-lg font-medium text-ink-gray-9"
         @click="copyToClipboard(dealId)"
@@ -102,7 +102,7 @@
             />
 
             <Button
-              style="display: none;"
+              class="hide-del"
               :tooltip="__('Go to Website')"
               :icon="LinkIcon"
               @click="
@@ -165,9 +165,8 @@
                 @change="(e) => addContact(e)"
               >
                 <template #target="{ togglePopover }">
-                  <Button
-                    style="display: none;"
-                    class="h-7 px-3"
+                  <Button                    
+                    class="h-7 px-3 hide-del"
                     variant="ghost"
                     icon="plus"
                     @click="togglePopover()"
@@ -805,3 +804,11 @@ function reloadAssignees(data) {
   }
 }
 </script>
+<style>
+.hide-del{
+  display: none;
+}
+.deal-details{
+  background-color: mintcream;
+}
+</style>

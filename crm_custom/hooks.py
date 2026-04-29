@@ -212,26 +212,7 @@ override_whitelisted_methods = {
      "crm.api.contact.get_linked_deals": "crm_custom.custom.override_whitelist.get_linked_deals"
 }
 
-standard_help_items = [
-	{
-		"item_label": "About",
-		"item_type": "Action",
-		"action": "frappe.ui.toolbar.show_about()",
-		"is_standard": 1,
-	},
-	{
-		"item_label": "Keyboard Shortcuts",
-		"item_type": "Action",
-		"action": "frappe.ui.toolbar.show_shortcuts(event)",
-		"is_standard": 1,
-	},
-	{
-		"item_label": "System Health",
-		"item_type": "Route",
-		"route": "/desk/system-health-report",
-		"is_standard": 1,
-	},
-]
+
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
@@ -302,6 +283,8 @@ standard_help_items = [
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+
 fixtures=[
      #{"dt":"Workspace","filters":[["module","IN",["FCRM"]]]},
      #{"dt":"Desktop Icon","filters":[["app","IN",["crm"]]]},
@@ -309,7 +292,7 @@ fixtures=[
      #{"dt":"ERPNext CRM Settings"},
      #{"dt":"FCRM Settings"},
      #{"dt":"Website Settings"},
-     #{"dt":"CRM Fields Layout","filters":[["name","IN",["Contact-Quick Entry","Contact-Side Panel","CRM Deal-Quick Entry","CRM Deal-Data Fields","CRM Deal-Side Panel","CRM Lead-Quick Entry","CRM Lead-Data Fields","CRM Lead-Side Panel"]]]}
+     #{"dt":"CRM Fields Layout","filters":[["name","IN",["Contact-Quick Entry","Contact-Side Panel","CRM Deal-Quick Entry","CRM Deal-Data Fields","CRM Deal-Side Panel","CRM Lead-Quick Entry","CRM Lead-Data Fields","CRM Lead-Side Panel"]]]},
      #{"dt":"CRM Lead Source","filters":[["name","IN",["Website","Deal"]]]},
      #{"dt":"Letter Head","filters":[["name","IN",["Company Letterhead - MTBS"]]]},
      #{"dt":"Print Format","filters":[["name","IN",["MTBS-SO-Quotation"]]]},

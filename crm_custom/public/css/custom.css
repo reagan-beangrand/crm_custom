@@ -7,8 +7,9 @@
     
 }
 .main-section{
-	background-image: url('/assets/crm_custom/images/login-bg.png');
+	/*background-image: url('/assets/crm_custom/images/login-bg.png');
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-attachment: fixed;
+	background-attachment: fixed;*/
+	background-color: rgb(245, 251, 251);
 }

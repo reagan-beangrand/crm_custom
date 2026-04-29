@@ -1,5 +1,6 @@
 <template>
   <div
+    style="background-color: ghostwhite"
     class="bg-primary relative flex h-full flex-col justify-between transition-all duration-300 ease-in-out"
     :class="isSidebarCollapsed ? 'w-12' : 'w-[220px]'"
   >
@@ -81,10 +82,13 @@
           :isSidebarCollapsed="isSidebarCollapsed"
           :afterUpgrade="() => capture('upgrade_plan_from_trial_banner')"
         />
-        <GettingStartedBanner
+        
+          <GettingStartedBanner
           v-if="!isOnboardingStepsCompleted"
           :isSidebarCollapsed="isSidebarCollapsed"
-        />
+          />
+        
+        
       </div>
       <SidebarLink
         v-if="isOnboardingStepsCompleted"

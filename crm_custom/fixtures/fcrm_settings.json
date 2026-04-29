@@ -2,7 +2,7 @@
  {
   "access_key": null,
   "auto_update_expected_deal_value": 1,
-  "brand_logo": "/files/ico.png",
+  "brand_logo": "/files/ico.svg",
   "brand_name": "MTBS CRM",
   "currency": "INR",
   "docstatus": 0,
@@ -39,7 +39,7 @@
     "type": "Route"
    },
    {
-    "hidden": 0,
+    "hidden": 1,
     "icon": "info",
     "is_standard": 1,
     "label": "About",
@@ -70,8 +70,8 @@
    }
   ],
   "enable_forecasting": 1,
-  "favicon": "/files/ico.svg",
-  "modified": "2026-03-19 21:29:13.664150",
+  "favicon": "/files/ico.png",
+  "modified": "2026-04-29 16:27:02.781894",
   "name": "FCRM Settings",
   "service_provider": "frankfurter.app"
  }

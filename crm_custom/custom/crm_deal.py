@@ -124,7 +124,11 @@ class ExtendedCRMDeal(CRMDeal):
 			frappe.throw(_("Secondary MUA is required."), frappe.MandatoryError)
 
 	def set_admission_batch_number(self):
-		if self.custom_service_type == "Saree Drape Class (SD)":
+		if not self.custom_admission_number:
+				self.custom_admission_number=make_autoname("ADM-.YYYY.-.######")
+		if not self.custom_batch:
+				self.custom_batch=make_autoname("BAT-.MM.-.YYYY.-.######")
+		""" if self.custom_service_type == "Saree Drape Class (SD)":
 			if not self.custom_admission_number:
 				self.custom_admission_number=make_autoname("ADM-SD-.MM.-.YYYY.-.#####")
 			if not self.custom_batch:
@@ -133,4 +137,4 @@ class ExtendedCRMDeal(CRMDeal):
 			if not self.custom_admission_number:
 				self.custom_admission_number=make_autoname("ADM-MC-.MM.-.YYYY.-.#####")
 			if not self.custom_batch:
-				self.custom_batch=make_autoname("BAT-MC-.MM.-.YYYY.-.#####")
+				self.custom_batch=make_autoname("BAT-MC-.MM.-.YYYY.-.#####") """

@@ -60,7 +60,7 @@
         />
       </template>
     </Tabs>
-    <Resizer class="flex flex-col justify-between border-l" side="right">
+    <Resizer class="flex flex-col justify-between border-l lead-details" side="right">
       <div
         class="flex h-[45px] cursor-copy items-center border-b px-5 py-2.5 text-lg font-medium text-ink-gray-9"
         @click="copyToClipboard(leadId)"
@@ -148,7 +148,7 @@
                   "
                 />
                 <Button
-                  style="display: none;"
+                  class="hide-del"
                   :tooltip="__('Go to Website')"
                   :icon="LinkIcon"
                   @click="
@@ -534,3 +534,11 @@ function reloadAssignees(data) {
   }
 }
 </script>
+<style>
+.hide-del{
+  display: none;
+}
+.lead-details{
+  background-color: mintcream;
+}
+</style>
