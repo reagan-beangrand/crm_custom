@@ -5,6 +5,13 @@ __pycache__/
 *.pyc
 *.py~
 
+dev-dist
+tags
+node_modules
+crm/public/frontend
+crm/www/crm.html
+build
+
 # Distribution / packaging
 .Python
 develop-eggs/
