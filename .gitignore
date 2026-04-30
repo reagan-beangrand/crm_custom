@@ -4,7 +4,13 @@ __pycache__/
 *$py.class
 *.pyc
 *.py~
-
+dev-dist
+tags
+node_modules
+crm_custom/public/frontend
+crm_custom/www/crm.html
+build
+frontend/coverage
 # Distribution / packaging
 .Python
 develop-eggs/
