@@ -1,7 +1,7 @@
 __version__ = "0.0.1"
 from crm_custom.custom.override import create_customer_in_erpnext as custom_create_customer_in_erpnext
-#import crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings
-from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import create_customer_in_erpnext as original_create_customer_in_erpnext
+import crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings
+#from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import create_customer_in_erpnext as original_create_customer_in_erpnext
 
-#crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings.create_customer_in_erpnext = custom_create_customer_in_erpnext
-original_create_customer_in_erpnext = custom_create_customer_in_erpnext
+crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings.create_customer_in_erpnext = custom_create_customer_in_erpnext
+#original_create_customer_in_erpnext = custom_create_customer_in_erpnext

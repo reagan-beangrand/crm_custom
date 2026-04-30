@@ -1,8 +1,10 @@
 import frappe
+from frappe import _
 import json
 from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import get_contacts as _get_contacts
-#from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import create_customer_in_remote_site as _create_customer_in_remote_site
+from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import create_customer_in_remote_site #as _create_customer_in_remote_site
 from erpnext.crm.frappe_crm_api import create_customer
+from frappe.frappeclient import FrappeClient
 
 def create_customer_in_erpnext(doc, method):
 	erpnext_crm_settings = frappe.get_single("ERPNext CRM Settings")
@@ -30,12 +32,48 @@ def create_customer_in_erpnext(doc, method):
 	
 
 
-	if not erpnext_crm_settings.is_erpnext_in_different_site:
+	""" if not erpnext_crm_settings.is_erpnext_in_different_site:
 		create_customer(customer)
-	#else:
-	#	_create_customer_in_remote_site(customer, erpnext_crm_settings)
+	else:
+		create_customer_in_remote_site(customer, erpnext_crm_settings) """
+
+	try:
+		if not erpnext_crm_settings.is_erpnext_in_different_site:
+			customer_name = create_customer(customer)
+		else:
+			customer_name = create_customer_in_remote_site(customer, erpnext_crm_settings)
+
+		if not customer_name:
+			frappe.log_error(
+				"Customer name not returned from ERPNext after creation",
+				f"Error while creating customer in ERPNext for CRM Deal: {doc.name}",
+			)
+			frappe.throw(_("Error while creating customer in ERPNext, check error log for more details"))
+	except Exception:
+		frappe.log_error(frappe.get_traceback(), "Error while creating customer in ERPNext")
+		frappe.throw(_("Error while creating customer in ERPNext, check error log for more details"))
+
+	if customer_name:
+		frappe.db.set_value("CRM Deal", doc.name, "erpnext_customer", customer_name)
+		frappe.publish_realtime("crm_customer_created")
 
 	frappe.publish_realtime("crm_customer_created")
+
+def create_customer_in_remote_site(customer, erpnext_crm_settings):
+	client = get_erpnext_site_client(erpnext_crm_settings)
+	try:
+		return client.post_api("erpnext.crm.frappe_crm_api.create_customer", customer)
+	except Exception:
+		frappe.log_error(frappe.get_traceback(), "Error while creating customer in remote site")
+		frappe.throw(_("Error while creating customer in ERPNext, check error log for more details"))
+
+def get_erpnext_site_client(erpnext_crm_settings):
+	site_url = erpnext_crm_settings.erpnext_site_url
+	api_key = erpnext_crm_settings.api_key
+	api_secret = erpnext_crm_settings.get_password("api_secret", raise_exception=False)
+
+	return FrappeClient(site_url, api_key=api_key, api_secret=api_secret)
+
 	
 def get_contact_address(contact_name):	
 	address = frappe.db.get_value("Contact", contact_name, "address")
