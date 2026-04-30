@@ -1,7 +1,7 @@
 import frappe
 import json
 from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import get_contacts as _get_contacts
-from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import create_customer_in_remote_site as _create_customer_in_remote_site
+#from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import create_customer_in_remote_site as _create_customer_in_remote_site
 from erpnext.crm.frappe_crm_api import create_customer
 
 def create_customer_in_erpnext(doc, method):
@@ -32,8 +32,8 @@ def create_customer_in_erpnext(doc, method):
 
 	if not erpnext_crm_settings.is_erpnext_in_different_site:
 		create_customer(customer)
-	else:
-		_create_customer_in_remote_site(customer, erpnext_crm_settings)
+	#else:
+	#	_create_customer_in_remote_site(customer, erpnext_crm_settings)
 
 	frappe.publish_realtime("crm_customer_created")
 	
