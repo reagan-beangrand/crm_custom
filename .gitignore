@@ -9,7 +9,9 @@ dev-dist
 tags
 node_modules
 crm/public/frontend
+crm_custom/public/frontend
 crm/www/crm.html
+crm_custom/www/crm.html
 build
 
 # Distribution / packaging
