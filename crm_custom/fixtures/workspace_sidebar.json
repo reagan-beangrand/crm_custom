@@ -217,5 +217,19 @@
   "name": "Frappe CRM",
   "standard": 0,
   "title": "Frappe CRM"
+ },
+ {
+  "app": "crm_custom",
+  "docstatus": 0,
+  "doctype": "Workspace Sidebar",
+  "for_user": null,
+  "header_icon": "crm",
+  "items": [],
+  "modified": "2026-03-31 23:40:26.229382",
+  "module": null,
+  "module_onboarding": null,
+  "name": "MTBS CRM",
+  "standard": 1,
+  "title": "MTBS CRM"
  }
 ]

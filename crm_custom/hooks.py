@@ -288,7 +288,7 @@ override_whitelisted_methods = {
 fixtures=[
      #{"dt":"Workspace","filters":[["module","IN",["FCRM"]]]},
      #{"dt":"Desktop Icon","filters":[["app","IN",["crm"]]]},
-     #{"dt":"Workspace Sidebar","filters":[["name","IN",["Frappe CRM"]]]},
+     #{"dt":"Workspace Sidebar","filters":[["name","IN",["Frappe CRM","MTBS CRM"]]]},
      #{"dt":"ERPNext CRM Settings"},
      #{"dt":"FCRM Settings"},
      #{"dt":"Website Settings"},
