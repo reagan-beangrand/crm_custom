@@ -296,8 +296,11 @@ fixtures=[
      #{"dt":"CRM Lead Source","filters":[["name","IN",["Website","Deal"]]]},
      #{"dt":"Letter Head","filters":[["name","IN",["Company Letterhead - MTBS"]]]},
      #{"dt":"Print Format","filters":[["name","IN",["MTBS-SO-Quotation"]]]},
-     {
+     #{
          #"doctype": "Portal Settings", 
          #"doctype": "Navbar Settings",
-     }
+     #}
+     #{"dt":"Property Setter","filters":[["module","=","Crm Custom"]]},
+     #{"dt":"Custom Field","filters":[["module","=","Crm Custom"]]}
+
     ]
