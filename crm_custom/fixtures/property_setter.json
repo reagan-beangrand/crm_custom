@@ -334,5 +334,37 @@
   "property_type": "Data",
   "row_name": null,
   "value": "MTBS-SO-Quotation"
+ },
+  {
+  "default_value": null,
+  "doc_type": "CRM Lead",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "first_name",
+  "is_system_generated": 0,
+  "modified": "2026-06-24 21:27:05.351276",
+  "module": "Crm Custom",
+  "name": "CRM Lead-first_name-reqd",
+  "property": "reqd",
+  "property_type": "Check",
+  "row_name": null,
+  "value": "0"
+ },
+ {
+  "default_value": null,
+  "doc_type": "CRM Lead",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "mobile_no",
+  "is_system_generated": 0,
+  "modified": "2026-06-24 21:28:07.378334",
+  "module": "Crm Custom",
+  "name": "CRM Lead-mobile_no-reqd",
+  "property": "reqd",
+  "property_type": "Check",
+  "row_name": null,
+  "value": "1"
  }
 ]

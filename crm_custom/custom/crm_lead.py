@@ -7,8 +7,8 @@ class ExtendedCRMLead(CRMLead):
 	def set_lead_name(self):
 		if not self.lead_name:
 			# Check for leads being created through data import
-			if not self.organization and not self.email and not self.flags.ignore_mandatory:
-				frappe.throw(_("Requires a person's name"))
+			if not self.organization and not self.mobile_no and not self.email and not self.flags.ignore_mandatory:
+				frappe.throw(_("Requires a person's mobile number"))
 			elif self.organization:
 				self.lead_name = self.organization
 			elif self.email:
