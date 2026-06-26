@@ -1,5 +1,66 @@
 {% extends "templates/web.html" %}
 {% block page_content %}
+
+<!-- Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: azure">
+        <h5 class="modal-title text-center" id="contactModalLabel">Welcome to MTBS! Register Your Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body" style="background-color: var(--soft-blush);">
+        <!-- added "needs-validation" class and "novalidate" to allow custom JS feedback -->
+        <form id="leadForm" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="modalFirstName" class="form-label">First Name *</label>
+            <input type="text" class="form-control" id="modalFirstName" required minlength="2">
+            <div class="invalid-feedback">Please enter your first name (at least 2 characters).</div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="modalLastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="modalLastName">
+            <div class="invalid-feedback">Please enter your last name.</div>
+          </div>
+          
+          <!--<div class="mb-3">
+            <label for="emailAddress" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="emailAddress" required>
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>-->
+          <div class="mb-3">
+            <label for="modalGender" class="form-label">Gender *</label>
+            <select class="form-control" id="modalGender" required>
+                <option selected value="">Select Gender</option>
+                <option value="Female">Female</option>
+                <option value="Genderqueer">Genderqueer</option>
+                <option value="Male">Male</option>
+                <option value="Non-Conforming">Non-Conforming</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+                <option value="Transgender">Transgender</option>
+            </select>
+            <div class="invalid-feedback">Please select a gender.</div>
+        </div>
+          
+          <div class="mb-3">
+            <label for="modalMobileNumber" class="form-label">Mobile Number *</label>
+            <input type="tel" class="form-control" id="modalMobileNumber" pattern="[0-9]{10}" placeholder="1234567890" required>
+            <div class="invalid-feedback">Please enter a valid 10-digit mobile number.</div>
+          </div>
+          
+          <button type="submit" class="btn btn-success w-100 mt-2">Book Now</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
 <!-- HOME PAGE VIEW -->
 <div id="home-view" class="page-view active">
     <!-- Hero Section -->
@@ -223,6 +284,10 @@
         </div>
     </section>
 </div>
+
+
+
+
 
 {% endblock %}
 {% block script %}

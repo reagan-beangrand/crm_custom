@@ -12,9 +12,9 @@ def create_lead_api():
         if not data.get("mobileNo") or not data.get("firstname"):
             frappe.throw("Missing required fields: 'Mobile No' and 'First Name'")
 
-        existing_lead = frappe.db.exists("CRM Lead", {"mobile_no": data["mobileNo"]})
+        existing_lead = frappe.db.get_value("CRM Lead", {"mobile_no": data["mobileNo"]},"first_name")
         if existing_lead:
-            frappe.response["message"] = f"Lead already exists: {existing_lead}"
+            frappe.response["message"] = f"Thank you! {existing_lead} details have been already exists."
             #return "Lead Exists"
         else:
             lead = frappe.get_doc({
@@ -25,11 +25,10 @@ def create_lead_api():
                 #"email": data["email"],
                 "mobile_no": data["mobileNo"],
                 "status": "New",
-                "source": "Website"
-        })
-        lead.insert(ignore_permissions=True)
-        frappe.response["message"] = f"Lead created: {lead.name}"
-        #return "Created"
+                "source": "Website" })
+            lead.insert(ignore_permissions=True)
+            frappe.response["message"] = f"Thank you! {lead.name} details have been securely saved."
+                #return "Created"
     except Exception as e:
         frappe.response["message"] = f"Error: {str(e)}"
         #return "Not Created"

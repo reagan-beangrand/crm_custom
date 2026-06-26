@@ -84,3 +84,78 @@ function handleContact(event) {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const modalElement = document.getElementById('contactModal');
+  const formElement = document.getElementById('leadForm');
+  const modalInstance = new bootstrap.Modal(modalElement);
+
+  // 1. LOCAL STORAGE CHECK: Only open if the user hasn't successfully submitted before
+  const hasSubmitted = localStorage.getItem('formSubmittedSuccessfully');
+  
+  if (!hasSubmitted) {
+    // Optional: Add a 2-second delay for a smoother user experience
+    setTimeout(function() {
+      modalInstance.show();
+    }, 2000);
+  }
+
+  // 2. ERROR PREVENTION & VALIDATION LOGIC
+  formElement.addEventListener('submit', function (event) {
+    // Check if the form matches all browser validation patterns
+    if (!formElement.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      // Prevent standard page reload if you are handling via API/AJAX
+      event.preventDefault(); 
+      //debugger;
+     
+      // Save data locally (or map this to your fetch/AJAX request)
+      const userData = {
+        firstname: document.getElementById('modalFirstName').value,
+        lastname: document.getElementById('modalLastName').value,
+        //email: document.getElementById('emailAddress').value,
+        gender: document.getElementById('modalGender').value,
+        mobileNo: document.getElementById('modalMobileNumber').value,
+      };
+      
+       //debugger;
+      // Send data to backend server
+      frappe.call({
+        method: "crm_custom.custom.custom_api.create_lead_api", //dotted path to server method
+        args: {
+            firstname: userData.firstname,
+            lastname: userData.lastname,
+            gender: userData.gender,
+            mobileNo: userData.mobileNo,
+        },
+        callback: function (r) {
+            if (!r.exc) {
+                if (r.message) {
+                     // Save data string and set the completion flag
+                    localStorage.setItem('savedUserData', JSON.stringify(userData));
+                    localStorage.setItem('formSubmittedSuccessfully', 'true');
+                    // Close the modal upon successful submission
+                    modalInstance.hide();
+                    frappe.show_alert({
+                        message: __(r.message),
+                        indicator: 'green'
+                    }, 4);
+                    }else {
+                    modalInstance.hide();
+                    alert("Database error: " + r.message);
+                }
+            }
+        },
+        error: function () {
+            // Show error message inline
+            modalInstance.hide();
+            alert("Could not connect to the server.");
+        }
+    });           
+    }
+    // Apply Bootstrap styles to visually highlight invalid fields
+    formElement.classList.add('was-validated');
+  }, false);
+});
