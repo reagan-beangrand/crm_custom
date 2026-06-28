@@ -4,6 +4,17 @@ from crm.fcrm.doctype.crm_lead.crm_lead import CRMLead
 
 class ExtendedCRMLead(CRMLead):
 
+	def validate(self):		
+		self.validate_mobileNumber()
+		super().validate()
+
+	
+	def validate_mobileNumber(self):
+		if self.mobile_no:
+			existing_person = self.person_exists(throw=True)
+			if existing_person:
+				frappe.throw(_("Person already exists with Mobile No: {0}").format(self.mobile_no), title=_("Person Already Exists"))
+
 	def set_lead_name(self):
 		if not self.lead_name:
 			# Check for leads being created through data import
@@ -15,6 +26,25 @@ class ExtendedCRMLead(CRMLead):
 				self.lead_name = self.email.split("@")[0]
 			else:
 				self.lead_name = "Unnamed Lead"
+
+	def person_exists(self, throw=True):				
+		mobile_exist = frappe.db.exists("CRM Lead", {"mobile_no": self.mobile_no})
+
+		doctype = "CRM Lead"
+		name = mobile_exist
+
+		if name:
+			value = "{0}: {1}".format("Mobile No", self.mobile_no)
+			person = frappe.db.get_value(doctype, name,)
+
+			if throw:
+				frappe.throw(
+					_("Person already exists with {0}").format(value),
+					title=_("Person Already Exists"),
+				)
+			return person
+
+		return False
 
 	@staticmethod
 	def default_kanban_settings():

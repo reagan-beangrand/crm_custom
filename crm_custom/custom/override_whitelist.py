@@ -3,7 +3,7 @@ import frappe
 import json
 from frappe import _
 from frappe.utils import get_url_to_list
-from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import  get_contact,get_contacts,get_erpnext_site_client
+from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import  get_primary_contact,get_contacts,get_erpnext_site_client
 #from crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings import get_erpnext_site_client
 from crm.fcrm.doctype.crm_deal.crm_deal import  create_contact
 
@@ -13,7 +13,7 @@ def get_quotation_url(crm_deal: str, organization: str | None = None):
 	if not erpnext_crm_settings.enabled:
 		frappe.throw(_("ERPNext is not integrated with the CRM"))
 
-	contact = get_contact(crm_deal)
+	contact = get_primary_contact(crm_deal)
 	address = get_contact_address(contact)
 	address = address.get("name") if address else None
 
