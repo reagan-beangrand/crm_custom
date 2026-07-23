@@ -10,7 +10,7 @@ class ExtendedCRMLead(CRMLead):
 
 	
 	def validate_mobileNumber(self):
-		if self.mobile_no:
+		if self.mobile_no and not self.flags.get("skip_duplicate_validation"):
 			existing_person = self.person_exists(throw=True)
 			if existing_person:
 				frappe.throw(_("Person already exists with Mobile No: {0}").format(self.mobile_no), title=_("Person Already Exists"))
