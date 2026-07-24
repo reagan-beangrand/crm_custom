@@ -125,6 +125,9 @@ def create_lead(doc):
 	contact=None
 	if not doc.get("first_name"):
 		contact = frappe.get_list("Contact",fields=["name","first_name","last_name","salutation","email_id","mobile_no","gender"], filters={"name": doc.get("contact")}, limit=1)
+
+	if contact:
+		lead.flags.skip_duplicate_validation=True
 	lead.update(
 		{
 			"first_name": contact[0].first_name if contact else doc.get("first_name"),
